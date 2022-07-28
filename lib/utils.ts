@@ -11,6 +11,9 @@ export class SqlContainer {
     this.expressions = expressions
     this.count = count
   }
+  public isSqlContainer(): boolean {
+    return true
+  }
 }
 
 export type TemplateLiteralFunc<T> = (

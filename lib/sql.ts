@@ -14,7 +14,13 @@ function sqlText(
     if (expression === undefined) {
       // if expression is undefined, just skip it
       text += chains[i + 1]
-    } else if (expression && expression._sql instanceof SqlContainer) {
+    } else if (
+      expression &&
+      typeof expression === 'object' &&
+      typeof expression._sql === 'object' &&
+      typeof expression._sql.isSqlContainer === 'function' &&
+      expression._sql.isSqlContainer()
+    ) {
       // if expression is a sub `sql` template literal
       const {
         text: _text,
