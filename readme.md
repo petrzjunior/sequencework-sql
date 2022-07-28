@@ -1,13 +1,12 @@
 <img src="logo.png" alt="sql``" width="109" height="65"><br>
 
-### javascript template literals to format sql
+### javascript template literals to format sql, fork of [@sequencework/sql](https://github.com/sequencework/sql)
 
 Transforms a template literal in an object that can be read by [node-postgres](https://github.com/brianc/node-postgres).
 
-![npm version](https://badgen.net/npm/v/@sequencework/sql)
-![install size](https://badgen.net/packagephobia/install/@sequencework/sql)
-![circleci](https://badgen.net/circleci/github/sequencework/sql/master)
-![coverage](https://badgen.net/codecov/c/github/sequencework/sql/master)
+### Fork features
+
+- Fixes `instanceof` behaviour with multiple `require` calls by adding a type tag
 
 ### Features
 
@@ -21,15 +20,15 @@ Transforms a template literal in an object that can be read by [node-postgres](h
 ### Installation
 
 ```
-npm install @sequencework/sql --save
+npm install sequencework-sql-global --save
 ```
 
-(or with **yarn**, `yarn add @sequencework/sql`)
+(or with **yarn**, `yarn add sequencework-sql-global`)
 
 ### Usage
 
 ```js
-const sql = require('@sequencework/sql')
+const sql = require('sequencework-sql-global')
 
 const yearRange = [1983, 1992]
 
@@ -50,7 +49,7 @@ const query = sql`
 You can also use conditions:
 
 ```js
-const sql = require('@sequencework/sql')
+const sql = require('sequencework-sql-global')
 
 const findBookByAuthor = author => sql`
   select * from books
@@ -106,7 +105,7 @@ We start by creating a function:
 
 ```js
 // movies.js
-const sql = require('@sequencework/sql')
+const sql = require('sequencework-sql-global')
 
 const listMoviesByYear = async (db, yearRange) => {
   const { rows } = await db.query(sql`
@@ -177,7 +176,7 @@ const main = async () => {
 Since we ❤️ [node-postgres](https://github.com/brianc/node-postgres) so much, we created shorthands and helpers for it:
 
 ```js
-const sql = require('@sequencework/sql/pg') // ⚠️ we import @sequencework/sql/pg
+const sql = require('sequencework-sql-global/pg') // ⚠️ we import sequencework-sql-global/pg
 
 // main export stays the same
 const query = sql`select * from movies where id = ${id}`
@@ -200,7 +199,7 @@ const nbMovie = await sql.count(
 You can then rewrite the previous `listMoviesByYear` function in a much more concise way 😎
 
 ```js
-const sql = require('@sequencework/sql/pg') // ⚠️ we import @sequencework/sql/pg
+const sql = require('sequencework-sql-global/pg') // ⚠️ we import sequencework-sql-global/pg
 
 const listMoviesByYear = async (db, yearRange) => sql.many(db)`
   select * from movies
@@ -215,7 +214,7 @@ const listMoviesByYear = async (db, yearRange) => sql.many(db)`
 `sql` comes with its TypeScript declaration file. You can directly use it within your TypeScript projects:
 
 ```ts
-import sql = require('@sequencework/sql')
+import sql = require('sequencework-sql-global')
 
 const yearRange: ReadonlyArray<number> = [1983, 1992]
 

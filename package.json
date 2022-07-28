@@ -1,10 +1,10 @@
 {
-  "name": "@sequencework/sql",
-  "version": "2.3.1",
+  "name": "sequencework-sql-global",
+  "version": "2.4.0",
   "main": "dist/sql.js",
   "types": "dist/sql.d.ts",
   "license": "MIT",
-  "description": "Javascript tag to format SQL template literals",
+  "description": "Javascript tag to format SQL template literals, fork with global support",
   "keywords": [
     "sql",
     "template-literals",
